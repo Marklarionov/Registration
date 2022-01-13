@@ -1,7 +1,5 @@
 from random import*
-login=["m","lol"]
-psword=["rrrrrr6R","lollol6L"]
-def registr():
+def registr(login:list,psword:list):
     """ Registers a user in the system.Requests username and password.
     """
     log=input("Login: ")
@@ -11,7 +9,7 @@ def registr():
             log=input("Login: ")
         except:
             print("This username already exists, please use another.")
-    log.join(login)
+    login=list(log)
     print(login)
     print("You want to create a password yourself or take a random one(1 or 2)")
     ans1=int(input())
@@ -19,22 +17,21 @@ def registr():
         print("You need minimum 6 characters, at least 1 number and 1 capital letter")
         print("Please,write down your password")
         pas=input()
-        print(pas_check())
-        pas.join(psword)
+        print(pas_check(pas))
+        psword=list(pas)
     elif ans1==2:
         print("Password is being generated.")
         print(ran_pass())
-        print("Remember this password.")
     else:
         print("Error")
 
-def log_in():
+def log_in(login:list,psword:list):
     """ Authorizes the user using login and password.
     """
-    print("Write your Login.")
-    log1=input("")
-    login.index(log1)
-    if log1 in login:
+    if log in login:
+        print("Write your Login.")
+        log=input("")
+        login.index(log1)
         print("Write your password.")
         pas1=input()
         if pas1 in psword:
@@ -51,11 +48,11 @@ def ran_pass():
     str4 = str0+str1+str2+str3
     ls = list(str4)
     shuffle(ls)
-    psword = ''.join([choice(ls) for x in range(12)])
-    print(psword)
+    pasword = ''.join([choice(ls) for x in range(12)])
+    psword=list(pasword)
+    print(pasword)
 
-def pas_check():
-    pass
+def pas_check(pas:str):
     """Write down your password and computer check his difficult.
     """
     for i in pas:
