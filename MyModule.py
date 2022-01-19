@@ -1,6 +1,36 @@
 from random import*
+
+def failist_lugemine(f:str,l:list):
+    """
+    """
+    fail=open(f,"r") #,enconding"utf-8-sig"
+    for rida in fail:
+        l.append(rida.strip())#"\n"
+    fail.close()
+    return l
+
+def fail_salv(f:str,l:list):
+    """
+    """
+    fail=open(f,"w")
+    for el in l:
+        fail.write(el+"\n")
+    fail.close()
+
+def rida_salvestamine(f:str,rida:str):
+    """Üks sõna või lause(rida) salvestamine
+    failisse
+    :param str f: fail kuku salvestame
+    :param str rida: sõna, mis vaja salvestada failisse
+    """
+    fail=open(f,"a")
+    fail.write(rida+"\n")
+    fail.close()
+
+
+
 def registr(login:list,psword:list):
-    """ Registers a user in the system.Requests username and password.
+    """Registers a user in the system.Requests username and password.
     """
     log=input("Login: ")
     if log in login:
@@ -10,6 +40,7 @@ def registr(login:list,psword:list):
         except:
             print("This username already exists, please use another.")
     login=list(log)
+    print(rida_salvestamine("logins.txt",log))
     print(login)
     print("You want to create a password yourself or take a random one(1 or 2)")
     ans1=int(input())
@@ -28,6 +59,7 @@ def registr(login:list,psword:list):
 def log_in(login:list,psword:list):
     """ Authorizes the user using login and password.
     """
+    global log
     if log in login:
         print("Write your Login.")
         log=input("")
